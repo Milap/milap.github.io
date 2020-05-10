@@ -1,0 +1,76 @@
+{
+  "_from": "vintage-one-page-html-template",
+  "_id": "vintage-one-page-html-template@0.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-LJchFdLKUAavS4c8qELN+5FoOicttX8fi1+M2mLZQyf+ru8tcooqQ3j9kdJq1p/FeVyfOLi4vtXP1b3k4tQdtA==",
+  "_location": "/vintage-one-page-html-template",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "vintage-one-page-html-template",
+    "name": "vintage-one-page-html-template",
+    "escapedName": "vintage-one-page-html-template",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vintage-one-page-html-template/-/vintage-one-page-html-template-0.0.3.tgz",
+  "_shasum": "cca27a954506fe59df137ea676045173aac54894",
+  "_spec": "vintage-one-page-html-template",
+  "_where": "/Users/jthomas/Desktop",
+  "author": {
+    "name": "Jeremy Thomas",
+    "email": "bbxdesign@gmail.com",
+    "url": "http://jgthms.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jgthms/vintage-one-page-html-template/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Start package for Bulma",
+  "devDependencies": {
+    "autoprefixer": "^9.4.7",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-ie": "^6.7.0",
+    "bulma": "^0.7.2",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.1"
+  },
+  "homepage": "https://github.com/jgthms/vintage-one-page-html-template#readme",
+  "keywords": [
+    "sass",
+    "bulma",
+    "css",
+    "start"
+  ],
+  "license": "MIT",
+  "name": "vintage-one-page-html-template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgthms/vintage-one-page-html-template.git"
+  },
+  "scripts": {
+    "css-build": "node-sass _sass/main.scss server/css/main.css",
+    "css-deploy": "npm run css-build && npm run css-postcss",
+    "css-postcss": "postcss --use autoprefixer --output css/main.css css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "deploy": "npm run css-deploy && npm run js-build",
+    "js-build": "babel _javascript --out-dir server/js",
+    "js-watch": "npm run js-build -- --watch",
+    "start": "npm-run-all --parallel css-watch js-watch",
+    "server": "http-server ./server -c-1 -p 9000"
+  },
+  "version": "0.0.3",
+  "dependencies": {
+    "bulma-carousel": "^4.0.4",
+    "http-server": "^0.12.1"
+  }
+}
