@@ -1,9 +1,5 @@
-# Demo for Vintage - One Page HTML Responsive Template
+# Links
 
-Vintage is One Page HTML Responsive Template created using [http://bulma.io/](http://bulma.io/) library.
+Below you can find all links for Projects created by me.
 
-[https://github.com/Milap/vintage-one-page-html-template.git](https://github.com/Milap/vintage-one-page-html-template.git)
-
-
-## License
-[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
+1. Tadpole Responsive One Page HTML template. [Demo](https://milap.github.io/tadpole/)
