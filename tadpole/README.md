@@ -1,12 +1,12 @@
-# Vintage - One Page HTML Responsive Template
+# Tadpole - One Page HTML Responsive Template
 
-Vintage is One Page HTML Responsive Template created using [http://bulma.io/](http://bulma.io/) library.
+Tadpole is One Page HTML Responsive Template created using [http://bulma.io/](http://bulma.io/) library.
 
 ## Installation
 
 Use Git or checkout with SVN using the below web URL.
 
-[https://github.com/Milap/vintage-one-page-html-template.git](https://github.com/Milap/vintage-one-page-html-template.git)
+[https://github.com/Milap/tadpole-one-page-html-template.git](https://github.com/Milap/tadpole-one-page-html-template.git)
 
 Run below command once clone is done, it will install all required `node_modules`.
 
