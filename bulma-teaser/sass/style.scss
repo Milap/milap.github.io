@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i|Source+Sans+Pro');
+
+// Set your brand colors
+$purple: #8A4D76;
+$blue: #351d5c;
+$jazzberry: #c40c6a;
+$indigo: #3a1180;
+// Update Bulma's global variables
+$family-sans-serif: "Playfair Display", Serif;
+$primary: $purple;
+$link: $blue;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/bulma";
+
+.teaser {
+	&__wrapper {
+		text-align: left;
+		padding: 0 40px;
+		@include until($tablet) {
+			margin: 20px 0;
+			padding: 0 20px;
+		}
+	}
+	&__image {
+		display: flex;
+		img {
+			width: 100%;
+		}
+	}
+	&__title {
+		color: $blue;
+		text-transform: uppercase;
+		font-weight: bold;
+		line-height: 1;
+		font-size: 2rem;
+		@include until($tablet) {
+			font-size: 1.50rem;
+		}
+	}
+	&__subtitle {
+		color: $jazzberry;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+		font-size: 1.125rem;
+		@include until($tablet) {
+			font-size: 1rem;
+		}
+	}
+	&__desc {
+		font-family: 'Source Sans Pro', Sans-Serif;
+		line-height: 1.44;
+		color: $indigo;
+		font-size: 1rem;
+	}
+	&__button {
+		margin-top: 20px;
+		.button {
+			text-transform: uppercase;
+		}
+	}
+	&__swaporder {
+		@include until($tablet) {
+			.columns {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		}
+	}
+	&--mobilebottom {
+		@include until($tablet) {
+			.columns {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		}
+	}
+}
