@@ -1,9 +1,9 @@
 // germain APM - UX Monitoring Loader
 
 germainApmInit(
-    /* germain services root URL:             */ "${germainApmRootUrl}", // e.g. "http://localhost:8080"
-    /* Monitoring profile name:               */ "${profileName}", // e.g. "Siebel IP17"
-    /* Web application name:                  */ "${appName}", // e.g. "Callcenter"
+    /* germain services root URL:             */ "https://padbhdf.cloud.germainapm.com", // e.g. "http://localhost:8080"
+    /* Monitoring profile name:               */ "Milap's HTML script", // e.g. "Siebel IP17"
+    /* Web application name:                  */ "Milap's HTML script", // e.g. "Callcenter"
     /* Hard-coded server hostname (optional): */ ""  // e.g. "cc3.domain.com"
 );
 
@@ -11,19 +11,14 @@ function germainApmInit(servicesUrl, monitoringProfileName, appName, serverHost)
 
     serverHost = serverHost || null;
     var ingestionUrl = servicesUrl + '/ingestion';
-    var profile = readLocalProfile();
-    var username;
 
-    if (localProfileIsRecent(24 * 60)) {
-        runProfile(profile);
-        username = getUsernameFromMonitoring();
-        if (!localProfileIsRecent(30)) {
-            (window.requestIdleCallback || window.setTimeout)(fetchLatestProfile.bind(null, profile ? profile.scriptVersion : null));
-        }
-    } else {
-        fetchLatestProfile(profile ? profile.scriptVersion : null);
-    }
-    
+    var profile = readLocalProfile();
+    runProfile(profile);
+    var username = getUsernameFromMonitoring(); // After monitoring is initialized, we may have a username
+
+    if (!localProfileIsRecent())
+        (window.requestIdleCallback || window.setTimeout)(fetchLatestProfile.bind(null, profile ? profile.scriptVersion : null));
+
 
 
     function getUsernameFromMonitoring() {
@@ -84,8 +79,10 @@ function germainApmInit(servicesUrl, monitoringProfileName, appName, serverHost)
                 profile.monitoringScript = newProfile.monitoringScript;
             profile.scriptVersion = newProfile.scriptVersion;
         }
+        //profile.constantsObj = newProfile.constantsObj;
+        //profile.settingsObj = newProfile.settingsObj;
         profile.initScript = newProfile.initScript;
-
+        
         window.localStorage.setItem('germainMonitoringProfileMetadata', JSON.stringify({
             updateTime: new Date().getTime(),
             forProfile: monitoringProfileName,
@@ -93,17 +90,17 @@ function germainApmInit(servicesUrl, monitoringProfileName, appName, serverHost)
         }));
         window.localStorage.setItem('germainMonitoringProfile', JSON.stringify(profile));
 
-        runProfile(profile); // Run only after updating localStorage metadata
+        runProfile(profile);
     }
 
-    function localProfileIsRecent(minutes) {
+    function localProfileIsRecent() {
         if (!window.localStorage.germainMonitoringProfile)
             return false;
         var md = readLocalProfileMetadata();
         if (md) {
             if (md.forProfile === monitoringProfileName
                     && (!username || md.forUsername === username)
-                    && md.updateTime > new Date().getTime() - minutes*60*1000) // Newer than 30 mins ago
+                    && md.updateTime > new Date().getTime() - 30*60*1000) // Newer than 30 mins ago
                 return true;
         }
         return false;
